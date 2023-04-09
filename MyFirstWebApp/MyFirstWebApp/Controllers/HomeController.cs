@@ -25,6 +25,30 @@ namespace MyFirstWebApp.Controllers
 
         public IActionResult About()
         {
+            AboutViewModel vm = new AboutViewModel
+            {
+                Info = "The most amazing MVC framework in the world",
+                Description = "Is ASP.NET FRAMEWORK developed by Microsoft............. :D"
+            };
+
+            return View(vm);
+        }
+
+        //var in the method should be named as in layout asp-route-id="10". In aour case id
+        public IActionResult Numbers(int id)
+        {
+            var numInRange = id;
+            ViewBag.numInRange = numInRange;
+            
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Numbers(string number)
+        {
+            int numInRange = int.Parse(number);
+            ViewBag.numInRange = numInRange;
+
             return View();
         }
 
